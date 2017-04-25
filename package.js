@@ -1,22 +1,18 @@
 Package.describe({
-  name: 'typ:accounts-ldap',
+  name: 'derek-fong:accounts-ldap',
   version: '1.1.0',
   summary: 'Accounts login for LDAP using ldapjs. Supports anonymous DN search & LDAPS.',
-  git: 'https://github.com/typ90/meteor-accounts-ldap',
+  git: 'https://github.com/derek-fong/meteor-accounts-ldap',
   documentation: 'README.md'
 });
-
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
 
-  api.use(['templating'], 'client');
-  api.use(['typ:ldapjs@0.7.3'], 'server');
+  api.use(['derek-fong:ldapjs@0.7.1'], 'server');
 
-
-  api.use('accounts-base', 'server');
-  api.imply('accounts-base', ['client', 'server']);
-  api.imply('accounts-password', ['client', 'server']);
+  api.use(['accounts-base'], 'server');
+  api.imply(['accounts-base', 'accounts-password'], 'server');
 
   api.use('check');
 
